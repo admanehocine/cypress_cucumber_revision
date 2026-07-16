@@ -33,24 +33,25 @@ pipeline{
                 }
         
                 stage('run user test'){
-                    steps{  
-                        script{
-                            if(params.ALLURE){
-                                if( params.isbrowser){
-                                    sh"npx cypress run --browser ${params.browser} --env allure=true"  
-                                }                              
-                                stash name: 'allure-results', includes: 'allure-results/*'
-                            }else {
-                                
-                                if( params.isbrowser){
-                                    sh"npx cypress run --browser ${params.browser}"  
-                                }else{
-                                    sh"npx cypress run"
-                                } 
-                            }
-                        }
-                    }
-                }
+    steps{  
+        script{
+            if(params.ALLURE){
+                if(params.isbrowser){
+                    sh "npx cypress run --browser ${params.browser} --env allure=true"  
+                } else {
+                    sh "npx cypress run --env allure=true"  // ✅ ajouté !
+                }                              
+                stash name: 'allure-results', includes: 'allure-results/*'
+            } else {
+                if(params.isbrowser){
+                    sh "npx cypress run --browser ${params.browser}"  
+                } else {
+                    sh "npx cypress run"
+                } 
+            }
+        }
+    }
+}
             }
         }
     }
