@@ -1,0 +1,23 @@
+//instaler dependance
+npm install --save-dev @shelex/cypress-allure-plugin allure-commandline
+
+//dans support/e2e
+import '@shelex/cypress-allure-plugin';
+
+//dans cypress.config
+// plugin allure
+  env: {
+  allure: true,
+  allureResultsPath: 'allure-results',
+  allureReuseAfterSpec: true,
+},
+
+// dans cypress.config dans la partie e2e : plugin allure
+const allureWriter = require('@shelex/cypress-allure-plugin/writer');
+allureWriter(on, config);
+return config
+
+//pour lancer le rapport allure 
+npx cypress run 
+npx allure generate allure-results --clean -o allure-report
+npx allure open allure-report
