@@ -10,10 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-<<<<<<< HEAD
     "@shelex/cypress-allure-plugin": "^2.41.2",
-=======
->>>>>>> 5795fe3a23d77e6f813f2bb81bf38420e36cfb23
     "allure-commandline": "^2.43.0",
     "allure-cypress": "^3.10.2",
     "cypress": "^15.18.1",
